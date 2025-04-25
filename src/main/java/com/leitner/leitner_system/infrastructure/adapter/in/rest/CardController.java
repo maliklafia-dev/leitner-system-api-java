@@ -41,7 +41,7 @@ public class CardController {
     @ApiResponse(responseCode = "200", description = "Cards retrieved successfully")
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CardResponseDto>> getCards(
-            @Parameter(description = "Tags to filter cards", example = "java,oop")
+            @Parameter(description = "Tags to filter cards", example = "java")
             @RequestParam(required = false) List<String> tag) {
 
         List<CardResponseDto> cardDtos = (tag == null || tag.isEmpty())
