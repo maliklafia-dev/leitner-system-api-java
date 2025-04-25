@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS cards (
-                       id UUID PRIMARY KEY,
+                       id INTEGER PRIMARY KEY,
                        question TEXT NOT NULL,
                        answer TEXT NOT NULL,
                        tag TEXT,
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS cards (
 );
 
 CREATE TABLE IF NOT EXISTS quizz (
-                       id UUID PRIMARY KEY,
+                       id INTEGER PRIMARY KEY,
                        status VARCHAR(20),
                        user_id UUID NOT NULL,
                        date TIMESTAMP,
@@ -19,16 +19,16 @@ CREATE TABLE IF NOT EXISTS quizz (
 );
 
 CREATE TABLE IF NOT EXISTS quizz_cards (
-                             quizz_id UUID,
-                             cards_id UUID,
+                             quizz_id INTEGER,
+                             cards_id INTEGER,
                              PRIMARY KEY (quizz_id, cards_id),
                              FOREIGN KEY (quizz_id) REFERENCES quizz(id) ON DELETE CASCADE,
                              FOREIGN KEY (cards_id) REFERENCES cards(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS quizz_answers (
-                               quizz_id UUID NOT NULL,
-                               card_id UUID NOT NULL,
+                               quizz_id INTEGER NOT NULL,
+                               card_id INTEGER NOT NULL,
                                is_correct BOOLEAN,
                                PRIMARY KEY (quizz_id, card_id),
                                FOREIGN KEY (quizz_id) REFERENCES quizz(id) ON DELETE CASCADE
