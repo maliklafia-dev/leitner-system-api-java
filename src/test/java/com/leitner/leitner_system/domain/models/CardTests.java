@@ -3,7 +3,7 @@ package com.leitner.leitner_system.domain.models;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -51,7 +51,7 @@ public class CardTests {
     void shouldMoveToNextCategoryAndChangeLastAnsweredWhenAnswerIsCorrect() {
         card.answeredCorrectly();
         assertEquals("SECOND", card.getCategory());
-        assertEquals(LocalDateTime.now(), card.getLastAnsweredAt());
+        assertEquals(LocalDate.now(), card.getLastAnsweredAt().toLocalDate());
     }
 
     @Test
