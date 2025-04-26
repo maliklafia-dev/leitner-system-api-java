@@ -5,7 +5,7 @@
 
 
 ```bash
-[Open the browser and visit:](https://leitner-system-api-java.onrender.com/swagger-ui/index.html)
+https://leitner-system-api-java.onrender.com/swagger-ui/index.html
 
 
 This project is an API that manages a **Leitner System** to help users memorize knowledge cards based on **spaced repetition**.
