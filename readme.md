@@ -3,10 +3,9 @@
 [![Build Status](https://github.com/your-username/leitner-system/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/leitner-system/actions)
 [![Coverage](https://img.shields.io/badge/coverage-80%25-brightgreen)](#)
 
-- Open the browser and visit:
 
 ```bash
-|https://leitner-system-api-java.onrender.com/swagger-ui/index.html]
+[Open the browser and visit:](https://leitner-system-api-java.onrender.com/swagger-ui/index.html)
 
 
 This project is an API that manages a **Leitner System** to help users memorize knowledge cards based on **spaced repetition**.
