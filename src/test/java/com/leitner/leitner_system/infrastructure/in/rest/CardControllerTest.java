@@ -16,7 +16,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -70,6 +69,18 @@ public class CardControllerTest {
                 .andExpect(jsonPath("$.question").value("Q"))
                 .andExpect(jsonPath("$.answer").value("A"))
                 .andExpect(jsonPath("$.tag").value("tag"));
+    }
+
+    @Test
+    void shouldTReturnNotFoundWhenCardIsNotFound() throws Exception {
+        UUID cardId = UUID.randomUUID();
+        Card card = new Card("Q", "A", "tag");
+        card.setId(cardId);
+
+        when(cardService.getCardById(cardId)).thenReturn(null);
+
+        mockMvc.perform(get("/cards/{id}", cardId)).andExpect(status().isNotFound());
+        verify(cardService, times(1)).getCardById(cardId);
     }
 
     @Test

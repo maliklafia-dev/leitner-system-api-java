@@ -41,7 +41,7 @@ public class CardController {
     @ApiResponse(responseCode = "200", description = "Cards retrieved successfully")
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CardResponseDto>> getCards(
-            @Parameter(description = "Tags to filter cards", example = "java")
+            @Parameter(description = "Tags to filter cards", example = "Horror")
             @RequestParam(required = false) List<String> tag) {
 
         List<CardResponseDto> cardDtos = (tag == null || tag.isEmpty())
@@ -51,7 +51,29 @@ public class CardController {
         return ResponseEntity.ok(cardDtos);
     }
 
-    @Operation(summary = "Create a card", description = "Creates a new Leitner card.")
+
+
+    @Operation(summary = "Get a card by ID", description = "Fetches a specific card using its unique ID.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Card found"),
+            @ApiResponse(responseCode = "404", description = "Card not found")
+    })
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Card> getCardById(
+            @Parameter(description = "The UUID of the card", required = true)
+            @PathVariable("id") UUID id) {
+        if(id == null) {
+             throw new IllegalArgumentException("Id is required");
+        }
+        Card card = cardService.getCardById(id);
+        if(card == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return ResponseEntity.ok(card);
+        }
+    }
+
+    @Operation(summary = "Create a new card", description = "Creates a new Leitner card.")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Card successfully created"),
             @ApiResponse(responseCode = "400", description = "Bad request - question or answer is missing")
@@ -68,21 +90,9 @@ public class CardController {
                 cardUserData.getTag()));
 
         CardUserData response = new CardUserData(
-                card.getId(), card.getCategory(), card.getQuestion(), card.getAnswer(), card.getTag());
+                card.getId(), card.getQuestion(), card.getAnswer(), card.getTag());
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
-
-    @Operation(summary = "Get a card by ID", description = "Fetches a specific card using its unique ID.")
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Card found"),
-            @ApiResponse(responseCode = "404", description = "Card not found")
-    })
-    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Card getCardById(
-            @Parameter(description = "The UUID of the card", required = true)
-            @PathVariable("id") UUID id) {
-        return cardService.getCardById(id);
     }
 
     @Operation(summary = "Get cards for a quiz", description = "Returns cards scheduled for review today or a specific date.")

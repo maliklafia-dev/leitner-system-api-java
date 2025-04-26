@@ -1,14 +1,25 @@
 package com.leitner.leitner_system.application.dto;
 
 import com.leitner.leitner_system.domain.models.Card;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.UUID;
 
+@Schema(description = "Dto used to create or update a card")
 public class CardResponseDto {
+    @Schema(description = "Unique identifier of the card", example = "6c10ad48-2bb8-4e2e-900a-21d62c00c07b")
     private UUID id;
+
+    @Schema(description = "Category of the card based on the Leitner box system", example = "FIRST")
     private String category;
+
+    @Schema(description = "The question to be asked", example = "What is encapsulation?")
     private String question;
+
+    @Schema(description = "The expected answer for the question", example = "The process of hiding internal details from the outside world.")
     private String answer;
+
+    @Schema(description = "The tag associated with the card", example = "OOP")
     private String tag;
 
     public CardResponseDto(Card card) {

@@ -1,14 +1,21 @@
 package com.leitner.leitner_system.application.dto;
 
 import com.leitner.leitner_system.domain.models.Card;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.UUID;
 
 public class CardUserData {
     private UUID id;
     private String category;
+
+    @Schema(description = "Question to be asked to the user during a quiz", example = "What is polymorphism?")
     private String question;
+
+    @Schema(description = "Expected answer for the question", example = "An object-oriented concept where objects can take multiple forms.")
     private String answer;
+
+    @Schema(description = "A tag to group cards on the same topic", example = "Java")
     private String tag;
 
     public CardUserData(String question, String answer, String tag) {
@@ -20,9 +27,8 @@ public class CardUserData {
     public CardUserData() {
     }
 
-    public CardUserData(UUID id, String category, String question, String answer, String tag) {
+    public CardUserData(UUID id, String question, String answer, String tag) {
         this.id = id;
-        this.category = category;
         this.question = question;
         this.answer = answer;
         this.tag = tag;
