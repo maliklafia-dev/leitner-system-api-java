@@ -3,6 +3,12 @@
 [![Build Status](https://github.com/your-username/leitner-system/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/leitner-system/actions)
 [![Coverage](https://img.shields.io/badge/coverage-80%25-brightgreen)](#)
 
+- Open the browser and visit:
+
+```bash
+[https://your-app.onrender.com/swagger-ui.html](https://leitner-system-api-java.onrender.com/swagger-ui/index.html)
+
+
 This project is an API that manages a **Leitner System** to help users memorize knowledge cards based on **spaced repetition**.
 
 ---
@@ -104,4 +110,4 @@ After deployment to Render:
 - Open the browser and visit:
 
 ```bash
-https://your-app.onrender.com/swagger-ui.html
+[https://your-app.onrender.com/swagger-ui.html](https://leitner-system-api-java.onrender.com/swagger-ui/index.html)
