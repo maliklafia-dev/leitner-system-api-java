@@ -6,7 +6,7 @@
 - Open the browser and visit:
 
 ```bash
-[https://your-app.onrender.com/swagger-ui.html](https://leitner-system-api-java.onrender.com/swagger-ui/index.html)
+|https://leitner-system-api-java.onrender.com/swagger-ui/index.html]
 
 
 This project is an API that manages a **Leitner System** to help users memorize knowledge cards based on **spaced repetition**.
@@ -110,4 +110,4 @@ After deployment to Render:
 - Open the browser and visit:
 
 ```bash
-[https://your-app.onrender.com/swagger-ui.html](https://leitner-system-api-java.onrender.com/swagger-ui/index.html)
+[https://leitner-system-api-java.onrender.com/swagger-ui/index.html]
